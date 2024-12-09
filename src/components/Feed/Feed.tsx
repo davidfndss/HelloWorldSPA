@@ -1,7 +1,6 @@
 import React from "react";
 import { Post } from "../Post/Post"
 import { useState, useEffect } from "react"
-import axios from "axios"
 import { getPostsService } from "../../services/post.services";
 
 interface IPost {
@@ -37,7 +36,7 @@ const Feed: React.FC = () => {
   }
 
   return (
-    <section className="min-w-[300px] w-[70vw] h-full border border-zinc-900 border-2 border-t-0 border-b-0 sm:max-w-[400px] md:w-[40vw] md:max-w-[600px]">
+    <section className="min-w-[300px] w-[70vw] h-full border border-zinc-900 border-2 border-t-0 border-b-0 mb-[75px] sm:max-w-[400px] md:w-[40vw] md:max-w-[600px] md:mb-0">
       {
         postsList && postsList.map((item: IPost) => {
           return <Post 

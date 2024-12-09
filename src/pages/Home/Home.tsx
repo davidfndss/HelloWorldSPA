@@ -4,10 +4,8 @@ import { Header } from "../../components/Header/Header"
 import { Aside } from "../../components/Aside/Aside"
 import { Search } from "../../components/Search/Search"
 import { AddPost } from "../../components/AddPost/AddPost"
-import { Navbar } from "../../components/Navbar/Navbar";
 import { LoadingContext } from "../../Context/LoadingContext";
 import { LoadingScreen } from "../../components/Loading/LoadingScreen"
-
 
 const Home: React.FC = () => {
   const loadingContext = useContext(LoadingContext)
@@ -28,7 +26,6 @@ const Home: React.FC = () => {
           <Header title="Posts" />
           <AddPost />
           <Feed />
-          <Navbar />
         </div>
         <Search />
       </main>

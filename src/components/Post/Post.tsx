@@ -14,9 +14,9 @@ const Post: React.FC<PostProps> = ({ id, body, name, username, avatar }) => {
   const navigate = useNavigate()
   
   return (
-    <div onClick={() => navigate(`/post/${id}`)} className="min-h-[80px] text-white flex flex-col tracking-wide border border-zinc-900 border-t-0 border-l-0 border-r-0 border-2 p-2 cursor-pointer">
+    <div onClick={() => navigate(`/post/${id}`)} className="min-h-[80px] text-white flex tracking-wide border border-zinc-900 border-t-0 border-l-0 border-r-0 border-2 p-2 cursor-pointer">
       
-      <div className="ml-1 w-full flex">
+      <div className="ml-1 w-full flex w-[85%] border">
         <div className="min-w-[48px]">
            <img src="/favicon.svg" className="h-[48px] w-[48px] rounded-full"></img>
         </div>
@@ -30,19 +30,13 @@ const Post: React.FC<PostProps> = ({ id, body, name, username, avatar }) => {
               @{username}
             </span>
           </div>
-          <p className="text-sm max-w-[500px] break-words mt-1 w-[35vw] max-w-[520px] h-full">{body}</p>
+          <p className="text-sm break-words h-full w-[55vw] sm:max-w-[300px] md:w-[30vw] md:max-w-[500px]">{body}</p>
         </div>
       </div>
       
-      <div className="flex justify-evenly mt-2">
+      <div className="flex justify-evenly mt-2 border w-[15%]">
         <button>
           <i className="bi bi-heart hover:text-purple-500 transition"></i>
-        </button>
-        <button>
-          <i className="bi bi-chat hover:text-purple-500 transition"></i>
-        </button>
-        <button>
-          <i className="bi bi-box-arrow-up-right hover:text-purple-500 transition"></i>
         </button>
       </div>
       

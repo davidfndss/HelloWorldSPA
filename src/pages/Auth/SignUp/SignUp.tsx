@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { checkUsernameService, checkEmailService, signupService, ICreateUser } from "../../../services/user.service";
+import { checkUsernameService, checkEmailService, signupService, ICreateUser } from "../../../services/user.services";
 import { Loading } from "../../../components/Loading/Loading";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -100,8 +100,8 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <section className="h-full w-full min-h-screen flex justify-center items-center text-white">
-      <article className="w-[600px] h-[600px] border-zinc-800 border-2 p-6 rounded-xl bg-zinc-900 flex flex-col justify-between items-center p-2 gap-3">
+    <section className="h-full w-full min-h-screen flex justify-center items-center text-white flex-col">
+      <article className="w-[90%] max-w-[600px] h-[600px] border-zinc-800 border-2 p-6 rounded-xl bg-zinc-900 flex flex-col justify-between items-center p-2 gap-3">
         <i onClick={() => navigate(-1)} className="bi bi-arrow-left relative right-[270px] text-xl cursor-pointer hover:text-purple-500 transition"></i>
         <div className="pt-4">
           <h1 className="text-3xl">Seja bem vindo ao <span className="text-purple-600">HelloWorld</span></h1>
@@ -116,9 +116,9 @@ const SignUp: React.FC = () => {
                 <>
                   <div className="flex flex-col gap-3">
                     <div className="flex flex-col items-center gap-1">
-                    <label htmlFor="password" className="w-full text-start">Nome de usuário</label>
-                      <div className="flex">
-                        <input placeholder="Defina um nome de usuário" className="w-[250px] bg-zinc-600 border border-zinc-500 p-2 rounded-right-sm border-r-0" {...register("username")} name="username" onInput={(e) => checkUsername((e.target as HTMLInputElement).value)}></input>
+                    <label htmlFor="password" className="text-start w-[90%]">Nome de usuário</label>
+                      <div className="flex w-[90%]">
+                        <input placeholder="Defina um nome de usuário" className="w-full bg-zinc-600 border border-zinc-500 p-2 rounded-right-sm border-r-0" {...register("username")} name="username" onInput={(e) => checkUsername((e.target as HTMLInputElement).value)}></input>
                         <span className="bg-zinc-600 h-full flex items-center px-2 rounded-left-sm min-w-[35px] border border-zinc-500 border-l-0">
                           {isUsernameAvailable === "" && !usernameCheckLoading && <i className="bi"> </i>}
                           {usernameCheckLoading && <Loading color="purple-500" size="sm" />}
@@ -130,8 +130,8 @@ const SignUp: React.FC = () => {
                     </div>
 
                     <div className="flex flex-col items-center gap-1">
-                    <label htmlFor="password" className="w-full text-start">E-mail</label>
-                        <div className="flex">
+                    <label htmlFor="password" className="w-[90%] text-start">E-mail</label>
+                        <div className="flex w-[90%]">
                           <input placeholder="Digite seu e-mail" className="w-[250px] bg-zinc-600 border border-zinc-500 p-2 rounded-right-sm border-r-0" {...register("email")} name="email" onInput={(e) => checkEmail((e.target as HTMLInputElement).value)}></input>
                           <span className="bg-zinc-600 h-full flex items-center px-2 rounded-left-sm min-w-[35px] border border-zinc-500 border-l-0">
                             {isEmailAvailable === "" && !emailCheckLoading && <i className="bi"> </i>}
@@ -156,16 +156,16 @@ const SignUp: React.FC = () => {
               )
               : (
                 <>
-                  <div>
-                    <div className="flex flex-col items-center gap-1">
-                      <label htmlFor="password" className="w-full text-start">Senha</label>
-                      <input placeholder="Senha" className="w-[285px] bg-zinc-600 border border-zinc-500 p-2 rounded" {...register("password")} name="password" type="password"></input>
+                  <div className="w-full">
+                    <div className="flex flex-col items-center gap-1 w-full">
+                      <label htmlFor="password" className="w-[90%] text-start">Senha</label>
+                      <input placeholder="Senha" className="w-[90%] bg-zinc-600 border border-zinc-500 p-2 rounded" {...register("password")} name="password" type="password"></input>
                       {attemptedSubmit && errors.password && <ErrorSpan text={errors.password.message!} />}
                     </div>
 
-                    <div className="flex flex-col items-center gap-1">
-                      <label htmlFor="password" className="w-full text-start">Confirme a senha</label>
-                      <input placeholder="Confirmar senha" className="w-[285px] bg-zinc-600 border border-zinc-500 p-2 rounded" {...register("confirmPassword")} name="confirmPassword" type="password"></input>
+                    <div className="flex flex-col items-center gap-1 w-full">
+                      <label htmlFor="password" className="w-[90%] text-start mt-2">Confirme a senha</label>
+                      <input placeholder="Confirmar senha" className="w-[90%] bg-zinc-600 border border-zinc-500 p-2 rounded" {...register("confirmPassword")} name="confirmPassword" type="password"></input>
                       {attemptedSubmit && errors.confirmPassword && <ErrorSpan text={errors.confirmPassword.message!} />}
                     </div>
                   </div>
@@ -179,6 +179,7 @@ const SignUp: React.FC = () => {
           }
         </form>
       </article>
+      <p className="text-zinc-700 text-xs w-[90vw] text-center w-full tracking-tight leading-4 mt-1">Ao utilizar o HelloWorld, você concorda com nossa política de privacidade e uso de cookies.</p>
     </section>
   );
 }

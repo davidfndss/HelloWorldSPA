@@ -8,7 +8,7 @@ type UserContextType = {
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [loggedUserInfo, setLoggedUserInfo] = useState<any>({});
+  const [loggedUserInfo, setLoggedUserInfo] = useState<null | object>(null);
 
   return (
     <UserContext.Provider value={{ loggedUserInfo, setLoggedUserInfo }}>

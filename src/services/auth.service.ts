@@ -1,4 +1,4 @@
-import { baseUrl } from "../services/user.service"
+import { baseUrl } from "../services/user.services"
 
 export interface ISigninUser {
   email: string;

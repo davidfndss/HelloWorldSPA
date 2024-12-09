@@ -36,21 +36,22 @@ const SignIn: React.FC = () => {
 
   return (
     <section className="h-full w-full min-h-screen flex justify-center items-center text-white">
-      <article className="w-[600px] h-[600px] border-zinc-800 border-2 p-6 rounded-xl bg-zinc-900 flex flex-col justify-between items-center p-2 gap-3">
-        <i onClick={() => navigate(-1)} className="bi bi-arrow-left relative right-[270px] text-xl cursor-pointer hover:text-purple-500 transition"></i>
+      <article className="w-[90%] border-zinc-800 border-2 p-6 rounded-xl bg-zinc-900 flex flex-col justify-between items-center p-2 gap-3 md:w-[600px] md:h-[550px]">
+        <i onClick={() => navigate(-1)} className="bi bi-arrow-left relative right-[270px] text-xl cursor-pointer hover:text-purple-500 transition hidden md:block"></i>
+        
         <div className="pt-4">
           <h1 className="text-3xl">Seja bem vindo de volta 🌎</h1>
-          <p className="text-zinc-500 w-[285px] mt-1">Faça login abaixo ↓</p>
+          <p className="text-zinc-500 max-w-[285px] mt-1">Faça login abaixo ↓</p>
         </div>
         
         <div className="h-full flex flex-col justify-center items-center p-2">
           <form className="flex flex-col h-full justify-evenly items-center gap-3" onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 w-[100%] md:w-auto">
               <label htmlFor="password" className="w-full text-start">E-mail</label>
-              <input placeholder="E-mail" className="w-[285px] bg-zinc-600 border border-zinc-500 p-2 rounded" {...register("email")}></input>
+              <input placeholder="E-mail" className="w-[100%] max-w-[285px] bg-zinc-600 border border-zinc-500 p-2 rounded md:w-[285px]" {...register("email")}></input>
               {errors.email && <ErrorSpan text={errors.email.message!} />}
               <label htmlFor="password" className="w-full text-start">Senha</label>
-              <input placeholder="Senha" className="w-[285px] bg-zinc-600 border border-zinc-500 p-2 rounded" {...register("password")}></input>
+              <input placeholder="Senha" className="w-[100%] max-w-[285px] bg-zinc-600 border border-zinc-500 p-2 rounded md:w-[285px]" type="password" {...register("password")}></input>
               {errors.password && <ErrorSpan text={errors.password.message!} />}
               {errorsList && errorsList.map((err) => <ErrorSpan text={err} /> )}
             </div>
